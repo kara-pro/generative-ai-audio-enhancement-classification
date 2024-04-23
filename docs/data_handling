@@ -1,0 +1,20 @@
+Note data is not split into train, validation, and test data sets due to the following warning on the original dataset:
+
+BEFORE YOU DOWNLOAD: AVOID COMMON PITFALLS!
+Since releasing the dataset we have noticed a couple of common mistakes that could invalidate your results, potentially leading to manuscripts being rejected or the publication of incorrect results. To avoid this, please read the following carefully:
+
+1. Don't reshuffle the data! Use the predefined 10 folds and perform 10-fold (not 5-fold) cross validation
+The experiments conducted by vast majority of publications using UrbanSound8K (by ourselves and others)  evaluate classification models via 10-fold cross validation using the predefined splits*. We strongly recommend following this procedure.
+
+Why?
+If you reshuffle the data (e.g. combine the data from all folds and generate a random train/test split) you will be incorrectly placing related samples in both the train and test sets, leading to inflated scores that don't represent your model's performance on unseen data. Put simply, your results will be wrong.
+Your results will NOT be comparable to previous results in the literature, meaning any claims to an improvement on previous research will be invalid. Even if you don't reshuffle the data, evaluating using different splits (e.g. 5-fold cross validation) will mean your results are not comparable to previous research.
+
+2. Don't evaluate just on one split! Use 10-fold (not 5-fold) cross validation and average the scores
+We have seen reports that only provide results for a single train/test split, e.g. train on folds 1-9, test on fold 10 and report a single accuracy score. We strongly advise against this. Instead, perform 10-fold cross validation using the provided folds and report the average score.
+
+Why?
+Not all the splits are as "easy". That is, models tend to obtain much higher scores when trained on folds 1-9 and tested on fold 10, compared to (e.g.) training on folds 2-10 and testing on fold 1. For this reason, it is important to evaluate your model on each of the 10 splits and report the average accuracy.
+Again, your results will NOT be comparable to previous results in the literature.
+
+Because of this, we have kept our features in separate files for each fold. This will allow us to ensure no data leakage occurs.
