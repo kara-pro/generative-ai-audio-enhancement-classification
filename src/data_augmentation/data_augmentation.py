@@ -21,14 +21,17 @@ def augement_audio(sample_file, sampling_rate):
     ])
     return augment(samples=sample_file, sample_rate=sampling_rate)
 
-os.chdir(r"..\..\data\original")
+input = os.getenv('INPUT_PATH')
+output = os.getenv("OUTPUT_PATH")
+
+os.chdir(os.path.join(input))
 for root, dirs, files in os.walk("."):  
     for file in files:
         folder = os.path.basename(root)
         relative_path = os.path.join(folder, file)
         sample_file, sampling_rate = librosa.load(relative_path)
         augmented_data = augement_audio(sample_file, sampling_rate)
-        output_folder = os.path.join(r"..\augmented", os.path.basename(folder))
+        output_folder = os.path.join(output, os.path.basename(folder))
         if not os.path.exists(output_folder):
             os.mkdir(output_folder)
         output_path = os.path.join(output_folder, file)

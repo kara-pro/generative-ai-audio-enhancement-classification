@@ -1,0 +1,21 @@
+# Use an official Python runtime as a parent image
+FROM python:3.11.9-slim
+
+# Set the working directory in the container
+WORKDIR /app
+COPY ./requirements.txt /app
+
+COPY ./preprocess.py /app
+
+# Copy the current directory contents into the container at app
+COPY . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Define environment variable for input and output paths (optional)
+ENV INPUT_PATH /input
+ENV OUTPUT_PATH /output
+
+# Command to run the Python script
+CMD ["python", "./preprocess.py"]

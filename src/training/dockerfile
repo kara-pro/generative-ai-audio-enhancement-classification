@@ -1,0 +1,22 @@
+# Use an official Python runtime as a parent image
+FROM python:3.11.9-slim
+
+# Set the working directory in the container
+WORKDIR /app
+COPY ./requirements.txt /app
+
+COPY ./training_docker.py /app
+
+# Copy the current directory contents into the container at app
+#COPY . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Define environment variable for input and output paths (optional)
+ENV MODEL_PATH /modelInput
+ENV INPUT_PATH /dataInput
+ENV OUTPUT_PATH /output
+
+# Command to run the Python script
+CMD ["python", "./training_docker.py"]

@@ -21,13 +21,15 @@ def preprocess_audio(relative_path):
     y_filt = librosa.effects.preemphasis(y)
     return y_filt
 
-os.chdir(r"..\..\data\augmented")
+input = os.getenv('INPUT_PATH')
+output = os.getenv("OUTPUT_PATH")
+os.chdir(input)
 for root, dirs, files in os.walk("."):  
     for file in files:
         folder = os.path.basename(root)
         relative_path = os.path.join(folder, file)
         processed_data = preprocess_audio(relative_path)
-        output_folder = os.path.join(r"..\processed", os.path.basename(folder))
+        output_folder = os.path.join(output, os.path.basename(folder))
         if not os.path.exists(output_folder):
             os.mkdir(output_folder)
         output_path = os.path.join(output_folder, file)

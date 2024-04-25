@@ -1,5 +1,4 @@
 import tensorflow as tf
-import os
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, Layer, Dense, Dropout
 from tensorflow.keras.layers import MultiHeadAttention, LayerNormalization, GlobalAveragePooling2D, Conv1D, Activation, Add
@@ -216,11 +215,8 @@ def create_audio_model(input_shape, num_classes, num_transformer_blocks=2, num_d
     return model
 
 def main():
-    model = create_audio_model((128,238), 10)
+    return create_audio_model((128,238), 10)
 
-    output = os.getenv("OUTPUT_PATH")
-
-    model.save(output)
     
 if __name__ == "__main__":
     main()
