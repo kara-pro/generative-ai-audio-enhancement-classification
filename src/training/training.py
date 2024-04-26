@@ -40,9 +40,9 @@ def load_data():
                 padded_spec = []
                 target_shape = (128, 238)
 
-                _, specs = train_test_split(specs,test_size=0.2,random_state=42, shuffle=True, stratify=lbls)
-                _, specs2 = train_test_split(spec2, test_size=0.2,random_state=42, shuffle=True, stratify=lbls)
-                _, lbls = train_test_split(lbls, test_size=0.2, random_state=42, shuffle=True, stratify=lbls)
+                _, specs = train_test_split(specs,test_size=0.3,random_state=54, shuffle=True, stratify=lbls)
+                _, specs2 = train_test_split(spec2, test_size=0.3,random_state=54, shuffle=True, stratify=lbls)
+                _, lbls = train_test_split(lbls, test_size=0.3, random_state=54, shuffle=True, stratify=lbls)
 
                 for item in specs:
                     #item = truncate_spectrogram(item)
@@ -98,9 +98,9 @@ def load_test():
                 padded_data = []
                 padded_spec = []
                 target_shape = (128, 238)
-                _, specs = train_test_split(specs, test_size=0.5, random_state=42, shuffle=True, stratify=lbls)#specs[0:10]
-                _, specs2 = train_test_split(spec2, test_size=0.5, random_state=42, shuffle=True, stratify=lbls)#specs[0:10]
-                _, lbls = train_test_split(lbls, test_size=0.5, random_state=42, shuffle=True, stratify=lbls)#lbls[0:10]
+                _, specs = train_test_split(specs, test_size=0.5, random_state=55, shuffle=True, stratify=lbls)#specs[0:10]
+                _, specs2 = train_test_split(spec2, test_size=0.5, random_state=55, shuffle=True, stratify=lbls)#specs[0:10]
+                _, lbls = train_test_split(lbls, test_size=0.5, random_state=55, shuffle=True, stratify=lbls)#lbls[0:10]
                 for item in specs:
                     #item = truncate_spectrogram(item)
                     padded_item = tuple(

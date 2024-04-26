@@ -166,7 +166,7 @@ def run_training(epoch_num, model, data_folds, label_folds, spectrogram_folds):
 
 def main():
     input = os.getenv("INPUT_PATH")
-    output = os.getenv("OUT_PUT")
+    output = os.getenv("OUTPUT_PATH")
     data_folds, label_folds, spectrogram_folds = load_data()
     data_test, label_test, spectrogram_test = load_test()
     model = load_model(input)
